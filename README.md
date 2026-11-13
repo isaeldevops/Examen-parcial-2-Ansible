@@ -32,4 +32,4 @@ ansible-lab/
    ansible-playbook -i inventory.ini playbook.yml
    ```
 
-   ![Captura del laboratorio](ProcessFlowAnsible.png)
+   ![Captura del laboratorio](./ansible-lab/ProcessFlowAnsible.png)
