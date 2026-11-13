@@ -1,0 +1,20 @@
+---
+- hosts: docker
+  gather_facts: yes
+  tasks:
+    - name: Info y Directorios
+      file:
+        path: "/tmp/ansible-demo/{{ item }}"
+        state: directory
+        mode: '0755'
+      loop: ['', 'logs', 'backup', 'config']
+
+    - name: Crear y escribir archivo info.txt
+      copy:
+        dest: /tmp/ansible-demo/info.txt
+        content: "Host: {{ ansible_hostname }}\nOS: {{ ansible_distribution }}"
+
+    - name: Mostrar datos y mensaje Ubuntu
+      debug:
+        msg: "Servidor: {{ ansible_hostname }} | OS: {{ ansible_distribution }} - ¡Es Ubuntu!"
+      when: ansible_distribution == "Ubuntu"
